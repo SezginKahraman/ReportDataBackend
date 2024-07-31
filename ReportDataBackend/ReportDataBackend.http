@@ -1,0 +1,6 @@
+@ReportDataBackend_HostAddress = http://localhost:5125
+
+GET {{ReportDataBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
