@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraServicePrincipal
+public partial class EntraServicePrincipal : IEntity
 {
     public int DbSpid { get; set; }
 

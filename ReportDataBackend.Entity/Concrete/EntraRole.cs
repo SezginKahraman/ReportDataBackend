@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraRole
+public partial class EntraRole : IEntity 
 {
     public string AzRoleId { get; set; } = null!;
 

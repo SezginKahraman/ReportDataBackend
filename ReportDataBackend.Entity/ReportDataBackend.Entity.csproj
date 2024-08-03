@@ -22,4 +22,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\CarGo\Core\bin\Debug\net6.0\Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

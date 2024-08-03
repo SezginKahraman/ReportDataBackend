@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Core.DataAccess.EntityFramework;
+using ReportDataBackend.DataAccess.Abstract;
+using ReportDataBackend.Entity.Concrete;
+using ReportDataBackend.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReportDataBackend.DataAccess.Concrete.EntityFramework
 {
-    internal class EntraGroupDal
+    public class EntraGroupDal : EfEntityRepositoryBase<EntraGroup, ReportDataBackendContext>, IEntraGroupDal
     {
     }
 }

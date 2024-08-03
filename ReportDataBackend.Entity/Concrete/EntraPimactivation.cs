@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraPimactivation
+public partial class EntraPimactivation : IEntity
 {
     public int DbPimid { get; set; }
 

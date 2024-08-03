@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraGroupModification
+public partial class EntraGroupModification : IEntity
 {
     public int DbGroupModificationId { get; set; }
 

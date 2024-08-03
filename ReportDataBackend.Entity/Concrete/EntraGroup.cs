@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraGroup
+public partial class EntraGroup : IEntity
 {
     public string AzGroupId { get; set; } = null!;
 

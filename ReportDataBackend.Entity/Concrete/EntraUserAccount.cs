@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraUserAccount
+public partial class EntraUserAccount : IEntity
 {
     public int DbUserAccountId { get; set; }
 

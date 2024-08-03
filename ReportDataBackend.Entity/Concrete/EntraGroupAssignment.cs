@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraGroupAssignment
+public partial class EntraGroupAssignment : IEntity
 {
     public int DbGroupAssignmentId { get; set; }
 
