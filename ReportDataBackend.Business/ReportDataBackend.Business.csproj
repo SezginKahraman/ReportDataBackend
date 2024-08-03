@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
-    <Folder Include="Concrete\" />
+    <ProjectReference Include="..\ReportDataBackend.DataAccess\ReportDataBackend.DataAccess.csproj" />
+    <ProjectReference Include="..\ReportDataBackend.Entity\ReportDataBackend.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\CarGo\Core\bin\Debug\net6.0\Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

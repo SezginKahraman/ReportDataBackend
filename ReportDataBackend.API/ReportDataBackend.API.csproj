@@ -20,4 +20,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ReportDataBackend.Business\ReportDataBackend.Business.csproj" />
+    <ProjectReference Include="..\ReportDataBackend.DataAccess\ReportDataBackend.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\CarGo\Core\bin\Debug\net6.0\Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
