@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.Entity.Concrete;
@@ -19,27 +20,27 @@ namespace ReportDataBackend.Business.Concrete
         }
         public IResult Add(EntraUserAccount t)
         {
-            throw new NotImplementedException();
+            return new SuccessResult();
         }
 
         public IResult Delete(EntraUserAccount t)
         {
-            throw new NotImplementedException();
+            return new SuccessResult();
         }
 
         public IDataResult<List<EntraUserAccount>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<EntraUserAccount>>(new List<EntraUserAccount>());
         }
 
         public IDataResult<EntraUserAccount> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<EntraUserAccount>(new EntraUserAccount());
         }
 
         public IResult Update(EntraUserAccount t)
         {
-            throw new NotImplementedException();
+            return new SuccessResult();
         }
     }
 }
