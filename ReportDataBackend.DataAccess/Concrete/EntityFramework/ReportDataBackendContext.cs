@@ -31,7 +31,6 @@ public partial class ReportDataBackendContext : DbContext
     public virtual DbSet<EntraUserAccount> EntraUserAccounts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=localhost,1440;Database=Identity; User=SA;Password=ReportDataBackend2024*!; Trusted_Connection=false; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

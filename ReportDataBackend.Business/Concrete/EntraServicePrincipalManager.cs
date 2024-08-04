@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.Entity.Concrete;
@@ -21,27 +22,30 @@ namespace ReportDataBackend.Business.Concrete
 
         public IResult Add(EntraServicePrincipal t)
         {
-            throw new NotImplementedException();
+            _entraServicePrincipalDal.Add(t);
+            return new SuccessResult();
         }
 
         public IResult Delete(EntraServicePrincipal t)
         {
-            throw new NotImplementedException();
+            _entraServicePrincipalDal.Delete(t);
+            return new SuccessResult();
         }
 
         public IDataResult<List<EntraServicePrincipal>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<EntraServicePrincipal>>(_entraServicePrincipalDal.GetAll());
         }
 
         public IDataResult<EntraServicePrincipal> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<EntraServicePrincipal>(_entraServicePrincipalDal.Get(t => t.DbSpid == id));
         }
 
         public IResult Update(EntraServicePrincipal t)
         {
-            throw new NotImplementedException();
+            _entraServicePrincipalDal.Update(t);
+            return new SuccessResult();
         }
     }
 }

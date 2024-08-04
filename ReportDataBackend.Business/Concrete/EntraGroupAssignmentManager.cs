@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.Entity.Concrete;
@@ -21,27 +22,30 @@ namespace ReportDataBackend.Business.Concrete
 
         public IResult Add(EntraGroupAssignment t)
         {
-            throw new NotImplementedException();
+            _entraGroupAssignmentDal.Add(t);
+            return new SuccessResult();
         }
 
         public IResult Delete(EntraGroupAssignment t)
         {
-            throw new NotImplementedException();
+            _entraGroupAssignmentDal.Delete(t);
+            return new SuccessResult();
         }
 
         public IDataResult<List<EntraGroupAssignment>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<EntraGroupAssignment>>(_entraGroupAssignmentDal.GetAll());
         }
 
         public IDataResult<EntraGroupAssignment> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<EntraGroupAssignment>(_entraGroupAssignmentDal.Get(t => t.DbGroupAssignmentId == id));
         }
 
         public IResult Update(EntraGroupAssignment t)
         {
-            throw new NotImplementedException();
+            _entraGroupAssignmentDal.Update(t);
+            return new SuccessResult();
         }
     }
 }

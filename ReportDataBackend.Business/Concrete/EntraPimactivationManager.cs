@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.Entity.Concrete;
@@ -21,27 +22,30 @@ namespace ReportDataBackend.Business.Concrete
 
         public IResult Add(EntraPimactivation t)
         {
-            throw new NotImplementedException();
+            _entraPimactivationDal.Add(t);
+            return new SuccessResult();
         }
 
         public IResult Delete(EntraPimactivation t)
         {
-            throw new NotImplementedException();
+            _entraPimactivationDal.Delete(t);
+            return new SuccessResult();
         }
 
         public IDataResult<List<EntraPimactivation>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<EntraPimactivation>>(_entraPimactivationDal.GetAll());
         }
 
         public IDataResult<EntraPimactivation> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<EntraPimactivation>(_entraPimactivationDal.Get(t => t.DbPimid == id));
         }
 
         public IResult Update(EntraPimactivation t)
         {
-            throw new NotImplementedException();
+            _entraPimactivationDal.Update(t);
+            return new SuccessResult();
         }
     }
 }

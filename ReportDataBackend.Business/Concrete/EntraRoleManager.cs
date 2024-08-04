@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.Entity.Concrete;
@@ -20,27 +21,30 @@ namespace ReportDataBackend.Business.Concrete
 
         public IResult Add(EntraRole t)
         {
-            throw new NotImplementedException();
+            _entraRoleDal.Add(t);
+            return new SuccessResult();
         }
 
         public IResult Delete(EntraRole t)
         {
-            throw new NotImplementedException();
+            _entraRoleDal.Delete(t);
+            return new SuccessResult();
         }
 
         public IDataResult<List<EntraRole>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<EntraRole>>(_entraRoleDal.GetAll());
         }
 
         public IDataResult<EntraRole> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<EntraRole>(_entraRoleDal.Get(t => t.AzRoleId == id.ToString()));
         }
 
         public IResult Update(EntraRole t)
         {
-            throw new NotImplementedException();
+            _entraRoleDal.Update(t);
+            return new SuccessResult();
         }
     }
 }

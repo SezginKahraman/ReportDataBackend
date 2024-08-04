@@ -20,26 +20,29 @@ namespace ReportDataBackend.Business.Concrete
         }
         public IResult Add(EntraUserAccount t)
         {
+            _entraUserAccountDal.Add(t);
             return new SuccessResult();
         }
 
         public IResult Delete(EntraUserAccount t)
         {
+            _entraUserAccountDal.Delete(t);
             return new SuccessResult();
         }
 
         public IDataResult<List<EntraUserAccount>> GetAll()
         {
-            return new SuccessDataResult<List<EntraUserAccount>>(new List<EntraUserAccount>());
+            return new SuccessDataResult<List<EntraUserAccount>>(_entraUserAccountDal.GetAll());
         }
 
         public IDataResult<EntraUserAccount> GetById(int id)
         {
-            return new SuccessDataResult<EntraUserAccount>(new EntraUserAccount());
+            return new SuccessDataResult<EntraUserAccount>(_entraUserAccountDal.Get(t => t.DbUserAccountId == id));
         }
 
         public IResult Update(EntraUserAccount t)
         {
+            _entraUserAccountDal.Update(t);
             return new SuccessResult();
         }
     }

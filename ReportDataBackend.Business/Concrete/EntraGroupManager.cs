@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.Entity.Concrete;
@@ -21,27 +22,30 @@ namespace ReportDataBackend.Business.Concrete
 
         public IResult Add(EntraGroup t)
         {
-            throw new NotImplementedException();
+            _entraGroupDal.Add(t);
+            return new SuccessResult();
         }
 
         public IResult Delete(EntraGroup t)
         {
-            throw new NotImplementedException();
+            _entraGroupDal.Delete(t);
+            return new SuccessResult();
         }
 
         public IDataResult<List<EntraGroup>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<EntraGroup>>(_entraGroupDal.GetAll());
         }
 
         public IDataResult<EntraGroup> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<EntraGroup>(_entraGroupDal.Get(t => t.AzGroupId == id.ToString()));
         }
 
         public IResult Update(EntraGroup t)
         {
-            throw new NotImplementedException();
+            _entraGroupDal.Update(t);
+            return new SuccessResult();
         }
     }
 }
