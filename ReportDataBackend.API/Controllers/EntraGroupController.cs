@@ -20,7 +20,7 @@ namespace ReportDataBackend.API.Controllers
 
         [Route("get")]
         [HttpGet]
-        public EntraGroup GetById(int id)
+        public EntraGroup GetById(string id)
         {
             return _entraGroupService.GetById(id).Data;
         }

@@ -37,9 +37,9 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessDataResult<List<EntraGroup>>(_entraGroupDal.GetAll());
         }
 
-        public IDataResult<EntraGroup> GetById(int id)
+        public IDataResult<EntraGroup> GetById(string id)
         {
-            return new SuccessDataResult<EntraGroup>(_entraGroupDal.Get(t => t.AzGroupId == id.ToString()));
+            return new SuccessDataResult<EntraGroup>(_entraGroupDal.Get(t => t.AzGroupId == id));
         }
 
         public IResult Update(EntraGroup t)

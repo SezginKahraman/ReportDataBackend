@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Entity;
+using Core.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace ReportDataBackend.Business.Abstract
 {
-    public interface IService<T>
+    public interface IService<TEntity, TTypeOfEntityId>
     {
-        IResult Add(T t);
-        IResult Delete(T t);
-        IResult Update(T t);
-        IDataResult<T> GetById(int id);
-        IDataResult<List<T>> GetAll();
+        IResult Add(TEntity t);
+        IResult Delete(TEntity t);
+        IResult Update(TEntity t);
+        IDataResult<TEntity> GetById(TTypeOfEntityId id);
+        IDataResult<List<TEntity>> GetAll();
     }
 }

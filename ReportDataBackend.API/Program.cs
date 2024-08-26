@@ -34,7 +34,7 @@ namespace ReportDataBackend.API
             #region DataAccess
 
             builder.Services.AddScoped<IEntraGroupAssignmentDal, EntraGroupAssignmentDal>();
-            builder.Services.AddScoped<IEntraGroupAssignmentDal, EntraGroupAssignmentDal>();
+            builder.Services.AddScoped<IEntraGroupDal, EntraGroupDal>();
             builder.Services.AddScoped<IEntraGroupModificationDal, EntraGroupModificationDal>();
             builder.Services.AddScoped<IEntraPimactivationDal, EntraPimactivationDal>();
             builder.Services.AddScoped<IEntraRoleDal, EntraRoleDal>();

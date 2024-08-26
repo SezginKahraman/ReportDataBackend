@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReportDataBackend.Business.Abstract
 {
-    public interface IEntraUserAccountService : IService<EntraUserAccount>
+    public interface IEntraUserAccountService : IService<EntraUserAccount, int>
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReportDataBackend.Business.Abstract
 {
-    public interface IEntraGroupModificationService : IService<EntraGroupModification>
+    public interface IEntraGroupModificationService : IService<EntraGroupModification, int>
     {
     }
 }

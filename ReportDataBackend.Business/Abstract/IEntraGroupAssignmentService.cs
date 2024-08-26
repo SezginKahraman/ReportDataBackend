@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReportDataBackend.Business.Abstract
 {
-    public interface IEntraGroupAssignmentService : IService<EntraGroupAssignment>
+    public interface IEntraGroupAssignmentService : IService<EntraGroupAssignment, int>
     {
     }
 }

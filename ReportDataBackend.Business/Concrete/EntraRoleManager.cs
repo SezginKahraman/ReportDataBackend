@@ -36,9 +36,9 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessDataResult<List<EntraRole>>(_entraRoleDal.GetAll());
         }
 
-        public IDataResult<EntraRole> GetById(int id)
+        public IDataResult<EntraRole> GetById(string id)
         {
-            return new SuccessDataResult<EntraRole>(_entraRoleDal.Get(t => t.AzRoleId == id.ToString()));
+            return new SuccessDataResult<EntraRole>(_entraRoleDal.Get(t => t.AzRoleId == id));
         }
 
         public IResult Update(EntraRole t)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReportDataBackend.Business.Abstract
 {
-    public interface IEntraPimactivationService : IService<EntraPimactivation>
+    public interface IEntraPimactivationService : IService<EntraPimactivation, int>
     {
     }
 }
