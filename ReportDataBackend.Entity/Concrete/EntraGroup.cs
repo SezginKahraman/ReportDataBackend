@@ -22,7 +22,7 @@ public partial class EntraGroup : IEntity
 
     public virtual ICollection<EntraGroupModification> EntraGroupModifications { get; set; } = new List<EntraGroupModification>();
 
-    public virtual ICollection<EntraServicePrincipal> EntraServicePrincipals { get; set; } = new List<EntraServicePrincipal>();
+    public virtual ICollection<GroupRoleMapping> EntraUserAccounts { get; set; } = new List<GroupRoleMapping>();
 
-    public virtual ICollection<EntraUserAccount> EntraUserAccounts { get; set; } = new List<EntraUserAccount>();
+    public virtual ICollection<ServicePrincipalGroupMapping> EntraServicePrincipals { get; set; } = new List<ServicePrincipalGroupMapping>();
 }

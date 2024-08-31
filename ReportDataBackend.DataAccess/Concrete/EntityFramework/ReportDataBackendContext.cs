@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using ReportDataBackend.Entity.Concrete;
 
-namespace ReportDataBackend.Entity;
+namespace ReportDataBackend.DataAccess.Concrete.EntityFramework;
 
 public partial class ReportDataBackendContext : DbContext
 {
@@ -29,6 +29,14 @@ public partial class ReportDataBackendContext : DbContext
     public virtual DbSet<EntraServicePrincipal> EntraServicePrincipals { get; set; }
 
     public virtual DbSet<EntraUserAccount> EntraUserAccounts { get; set; }
+
+    public virtual DbSet<GroupRoleMapping> GroupRoleMappings { get; set; }
+
+    public virtual DbSet<ServicePrincipalGroupMapping> ServicePrincipalGroupMappings { get; set; }
+
+    public virtual DbSet<ServicePrincipalRoleMapping> ServicePrincipalRoleMappings { get; set; }
+
+    public virtual DbSet<UserRoleMapping> UserRoleMappings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=localhost,1440;Database=Identity; User=SA;Password=ReportDataBackend2024*!; Trusted_Connection=false; TrustServerCertificate=True");
@@ -246,15 +254,6 @@ public partial class ReportDataBackendContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("az_Type");
-
-            entity.HasOne(d => d.AzGroup).WithMany(p => p.EntraServicePrincipals)
-                .HasForeignKey(d => d.AzGroupId)
-                .HasConstraintName("FK__EntraServ__az_Gr__45F365D3");
-
-            entity.HasOne(d => d.AzRole).WithMany(p => p.EntraServicePrincipals)
-                .HasForeignKey(d => d.AzRoleId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__EntraServ__az_Ro__44FF419A");
         });
 
         modelBuilder.Entity<EntraUserAccount>(entity =>
@@ -298,14 +297,114 @@ public partial class ReportDataBackendContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("az_UPN");
+        });
+
+        modelBuilder.Entity<GroupRoleMapping>(entity =>
+        {
+            entity.HasKey(e => e.DbUserRoleId).HasName("PK__GroupRol__478CE56E4165F680");
+
+            entity.Property(e => e.DbUserRoleId).HasColumnName("db_UserRoleID");
+            entity.Property(e => e.AzGroupId)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("az_GroupID");
+            entity.Property(e => e.DbAssignedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("db_AssignedDate");
+            entity.Property(e => e.DbUserAccountId).HasColumnName("db_UserAccountID");
 
             entity.HasOne(d => d.AzGroup).WithMany(p => p.EntraUserAccounts)
                 .HasForeignKey(d => d.AzGroupId)
-                .HasConstraintName("FK__EntraUser__az_Gr__36B12243");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__GroupRole__az_Gr__66603565");
+
+            entity.HasOne(d => d.DbUserAccount).WithMany(p => p.AzGroups)
+                .HasForeignKey(d => d.DbUserAccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__GroupRole__db_Us__6754599E");
+        });
+
+        modelBuilder.Entity<ServicePrincipalGroupMapping>(entity =>
+        {
+            entity.HasKey(e => e.DbSpgroupId).HasName("PK__ServiceP__BD0A520FF929ADD4");
+
+            entity.ToTable("ServicePrincipalGroupMapping");
+
+            entity.Property(e => e.DbSpgroupId).HasColumnName("db_SPGroupID");
+            entity.Property(e => e.AzGroupId)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("az_GroupID");
+            entity.Property(e => e.AzSpid).HasColumnName("az_SPID");
+            entity.Property(e => e.DbAssignedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("db_AssignedDate");
+
+            entity.HasOne(d => d.AzGroup).WithMany(p => p.EntraServicePrincipals)
+                .HasForeignKey(d => d.AzGroupId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ServicePr__az_Gr__7E37BEF6");
+
+            entity.HasOne(d => d.AzSp).WithMany(p => p.AzGroups)
+                .HasForeignKey(d => d.AzSpid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ServicePr__az_SP__7F2BE32F");
+        });
+
+        modelBuilder.Entity<ServicePrincipalRoleMapping>(entity =>
+        {
+            entity.HasKey(e => e.DbSproleId).HasName("PK__ServiceP__F2E25C76225807C3");
+
+            entity.ToTable("ServicePrincipalRoleMapping");
+
+            entity.Property(e => e.DbSproleId).HasColumnName("db_SPRoleID");
+            entity.Property(e => e.AzRoleId)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("az_RoleID");
+            entity.Property(e => e.AzSpid).HasColumnName("az_SPID");
+            entity.Property(e => e.DbAssignedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("db_AssignedDate");
+
+            entity.HasOne(d => d.AzRole).WithMany(p => p.EntraServicePrincipals)
+                .HasForeignKey(d => d.AzRoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ServicePr__az_Ro__08B54D69");
+
+            entity.HasOne(d => d.AzSp).WithMany(p => p.AzRoles)
+                .HasForeignKey(d => d.AzSpid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ServicePr__az_SP__09A971A2");
+        });
+
+        modelBuilder.Entity<UserRoleMapping>(entity =>
+        {
+            entity.HasKey(e => e.DbUserRoleId).HasName("PK__UserRole__478CE56E9D27E41C");
+
+            entity.Property(e => e.DbUserRoleId).HasColumnName("db_UserRoleID");
+            entity.Property(e => e.AzRoleId)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("az_RoleID");
+            entity.Property(e => e.DbAssignedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("db_AssignedDate");
+            entity.Property(e => e.DbUserAccountId).HasColumnName("db_UserAccountID");
 
             entity.HasOne(d => d.AzRole).WithMany(p => p.EntraUserAccounts)
                 .HasForeignKey(d => d.AzRoleId)
-                .HasConstraintName("FK__EntraUser__az_Ro__35BCFE0A");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__UserRoleM__az_Ro__619B8048");
+
+            entity.HasOne(d => d.DbUserAccount).WithMany(p => p.AzRoles)
+                .HasForeignKey(d => d.DbUserAccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__UserRoleM__db_Us__628FA481");
         });
 
         OnModelCreatingPartial(modelBuilder);

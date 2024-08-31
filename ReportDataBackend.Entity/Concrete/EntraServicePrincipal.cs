@@ -24,7 +24,7 @@ public partial class EntraServicePrincipal : IEntity
 
     public string AzStatus { get; set; } = null!;
 
-    public virtual EntraGroup? AzGroup { get; set; }
+    public virtual ICollection<ServicePrincipalGroupMapping> AzGroups { get; set; } = new List<ServicePrincipalGroupMapping>();
 
-    public virtual EntraRole AzRole { get; set; } = null!;
+    public virtual ICollection<ServicePrincipalRoleMapping> AzRoles { get; set; } = new List<ServicePrincipalRoleMapping>();
 }

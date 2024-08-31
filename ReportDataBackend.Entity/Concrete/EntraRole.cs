@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ReportDataBackend.Entity.Concrete;
 
-public partial class EntraRole : IEntity 
+public partial class EntraRole : IEntity
 {
     public string AzRoleId { get; set; } = null!;
 
@@ -22,7 +22,7 @@ public partial class EntraRole : IEntity
 
     public virtual ICollection<EntraPimactivation> EntraPimactivations { get; set; } = new List<EntraPimactivation>();
 
-    public virtual ICollection<EntraServicePrincipal> EntraServicePrincipals { get; set; } = new List<EntraServicePrincipal>();
+    public virtual ICollection<ServicePrincipalRoleMapping> EntraServicePrincipals { get; set; } = new List<ServicePrincipalRoleMapping>();
 
-    public virtual ICollection<EntraUserAccount> EntraUserAccounts { get; set; } = new List<EntraUserAccount>();
+    public virtual ICollection<UserRoleMapping> EntraUserAccounts { get; set; } = new List<UserRoleMapping>();
 }

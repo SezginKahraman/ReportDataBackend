@@ -26,11 +26,11 @@ public partial class EntraUserAccount : IEntity
 
     public string AzStatus { get; set; } = null!;
 
-    public virtual EntraGroup? AzGroup { get; set; }
-
-    public virtual EntraRole? AzRole { get; set; }
-
     public virtual ICollection<EntraGroupModification> EntraGroupModifications { get; set; } = new List<EntraGroupModification>();
 
     public virtual ICollection<EntraPimactivation> EntraPimactivations { get; set; } = new List<EntraPimactivation>();
+
+    public virtual ICollection<GroupRoleMapping> AzGroups { get; set; } = new List<GroupRoleMapping>();
+
+    public virtual ICollection<UserRoleMapping> AzRoles { get; set; } = new List<UserRoleMapping>();
 }
