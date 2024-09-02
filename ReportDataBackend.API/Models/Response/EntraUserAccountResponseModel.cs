@@ -1,6 +1,4 @@
-﻿using ReportDataBackend.Entity.Concrete;
-
-namespace ReportDataBackend.API.Models.Response
+﻿namespace ReportDataBackend.API.Models.Response
 {
     public class EntraUserAccountResponseModel
     {
@@ -24,12 +22,12 @@ namespace ReportDataBackend.API.Models.Response
 
         public string AzStatus { get; set; } = null!;
 
-        public List<EntraGroupModification> EntraGroupModifications { get; set; } = new List<EntraGroupModification>();
+        public List<EntraGroupModificationResponseModel>? EntraGroupModifications { get; set; } = new List<EntraGroupModificationResponseModel>();
 
-        public List<EntraPimactivation> EntraPimactivations { get; set; } = new List<EntraPimactivation>();
+        public List<EntraPimactivationResponseModel>? EntraPimactivations { get; set; } = new List<EntraPimactivationResponseModel>();
 
-        public List<EntraGroup> AzGroups { get; set; } = new List<EntraGroup>();
+        public List<EntraGroupResponseModel>? AzGroups { get; set; } = new List<EntraGroupResponseModel>();
 
-        public List<EntraRole> AzRoles { get; set; } = new List<EntraRole>();
+        public List<EntraRoleResponseModel>? AzRoles { get; set; } = new List<EntraRoleResponseModel>();
     }
 }
