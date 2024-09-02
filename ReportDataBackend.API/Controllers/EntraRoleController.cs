@@ -20,16 +20,16 @@ namespace ReportDataBackend.API.Controllers
 
         [Route("get")]
         [HttpGet]
-        public EntraRole GetById(string id)
+        public EntraRole GetById(string id, bool withInclude)
         {
-            return _entraRoleService.GetById(id).Data;
+            return _entraRoleService.GetById(id, withInclude).Data;
         }
 
         [Route("getall")]
         [HttpGet]
-        public List<EntraRole> GetAll()
+        public List<EntraRole> GetAll(bool withInclude)
         {
-            return _entraRoleService.GetAll().Data;
+            return _entraRoleService.GetAll(true).Data;
         }
     }
 }

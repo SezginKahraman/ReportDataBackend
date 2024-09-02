@@ -31,14 +31,24 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<EntraRole>> GetAll()
+        public IDataResult<List<EntraRole>> GetAll(bool withIncludes = false)
         {
-            return new SuccessDataResult<List<EntraRole>>(_entraRoleDal.GetAll());
+            var relatedUsers = withIncludes ? _entraRoleDal.GetAllWithUsers() : _entraRoleDal.GetAll();
+            if (relatedUsers == null)
+            {
+                return new ErrorDataResult<List<EntraRole>>("No role found with the given id.");
+            }
+            return new SuccessDataResult<List<EntraRole>>(relatedUsers);
         }
 
-        public IDataResult<EntraRole> GetById(string id)
+        public IDataResult<EntraRole> GetById(string id, bool withIncludes = false)
         {
-            return new SuccessDataResult<EntraRole>(_entraRoleDal.Get(t => t.AzRoleId == id));
+            var relatedUser = withIncludes ? _entraRoleDal.GetWithUsers(t => t.AzRoleId == id) : _entraRoleDal.Get(t => t.AzRoleId == id);
+            if(relatedUser == null)
+            {
+                return new ErrorDataResult<EntraRole>("No role found with the given id.");
+            }
+            return new SuccessDataResult<EntraRole>(relatedUser);
         }
 
         public IResult Update(EntraRole t)

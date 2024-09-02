@@ -19,16 +19,16 @@ namespace ReportDataBackend.API.Controllers
 
         [Route("get")]
         [HttpGet]
-        public EntraUserAccount GetById(int id)
+        public EntraUserAccount GetById(int id, bool withInclude)
         {
-            return _entraUserAccountService.GetById(id).Data;
+            return _entraUserAccountService.GetById(id, withInclude).Data;
         }
 
         [Route("getall")]
         [HttpGet]
-        public List<EntraUserAccount> GetAll()
+        public List<EntraUserAccount> GetAll(bool withInclude)
         {
-            return _entraUserAccountService.GetAll().Data;
+            return _entraUserAccountService.GetAll(withInclude).Data;
         }
     }
 }

@@ -3,6 +3,7 @@ using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.Business.Concrete;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.DataAccess.Concrete.EntityFramework;
+using System.Text.Json.Serialization;
 
 namespace ReportDataBackend.API
 {
@@ -14,7 +15,12 @@ namespace ReportDataBackend.API
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                options.JsonSerializerOptions.WriteIndented = true; 
+                options.JsonSerializerOptions.MaxDepth = 10;
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

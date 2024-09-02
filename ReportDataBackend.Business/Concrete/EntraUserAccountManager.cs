@@ -30,16 +30,28 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<EntraUserAccount>> GetAll()
+        public IDataResult<List<EntraUserAccount>> GetAll(bool withIncludes = false)
         {
-            return new SuccessDataResult<List<EntraUserAccount>>(_entraUserAccountDal.GetAll());
+            var relatedAccounts = withIncludes ? _entraUserAccountDal.GetAllWithUsers() : _entraUserAccountDal.GetAll();
+
+            if (relatedAccounts == null)
+            {
+                return new ErrorDataResult<List<EntraUserAccount>>("No role found with the given id.");
+            }
+            return new SuccessDataResult<List<EntraUserAccount>>(relatedAccounts);
         }
 
-        public IDataResult<EntraUserAccount> GetById(int id)
+        public IDataResult<EntraUserAccount> GetById(int id, bool withIncludes = false)
         {
-            return new SuccessDataResult<EntraUserAccount>(_entraUserAccountDal.Get(t => t.DbUserAccountId == id));
-        }
+            var relatedAccount = withIncludes ? _entraUserAccountDal.GetWithUsers(t => t.DbUserAccountId == id) : _entraUserAccountDal.Get(t => t.DbUserAccountId == id);
 
+            if (relatedAccount == null)
+            {
+                return new ErrorDataResult<EntraUserAccount>("No role found with the given id.");
+            }
+
+            return new SuccessDataResult<EntraUserAccount>(relatedAccount);
+        }
         public IResult Update(EntraUserAccount t)
         {
             _entraUserAccountDal.Update(t);

@@ -32,12 +32,12 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<EntraGroup>> GetAll()
+        public IDataResult<List<EntraGroup>> GetAll(bool withIncludes = false)
         {
             return new SuccessDataResult<List<EntraGroup>>(_entraGroupDal.GetAll());
         }
 
-        public IDataResult<EntraGroup> GetById(string id)
+        public IDataResult<EntraGroup> GetById(string id, bool withIncludes = false)
         {
             return new SuccessDataResult<EntraGroup>(_entraGroupDal.Get(t => t.AzGroupId == id));
         }

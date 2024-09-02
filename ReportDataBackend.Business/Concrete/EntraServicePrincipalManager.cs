@@ -32,12 +32,12 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<EntraServicePrincipal>> GetAll()
+        public IDataResult<List<EntraServicePrincipal>> GetAll(bool withIncludes = false)
         {
             return new SuccessDataResult<List<EntraServicePrincipal>>(_entraServicePrincipalDal.GetAll());
         }
 
-        public IDataResult<EntraServicePrincipal> GetById(int id)
+        public IDataResult<EntraServicePrincipal> GetById(int id, bool withIncludes = false)
         {
             return new SuccessDataResult<EntraServicePrincipal>(_entraServicePrincipalDal.Get(t => t.DbSpid == id));
         }

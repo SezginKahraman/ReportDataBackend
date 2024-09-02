@@ -32,12 +32,12 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<EntraPimactivation>> GetAll()
+        public IDataResult<List<EntraPimactivation>> GetAll(bool withIncludes = false)
         {
             return new SuccessDataResult<List<EntraPimactivation>>(_entraPimactivationDal.GetAll());
         }
 
-        public IDataResult<EntraPimactivation> GetById(int id)
+        public IDataResult<EntraPimactivation> GetById(int id, bool withIncludes = false)
         {
             return new SuccessDataResult<EntraPimactivation>(_entraPimactivationDal.Get(t => t.DbPimid == id));
         }
