@@ -20,8 +20,6 @@ public partial class EntraRole : IEntity
 
     public virtual ICollection<EntraGroupAssignment> EntraGroupAssignments { get; set; } = new List<EntraGroupAssignment>();
 
-    public virtual ICollection<EntraPimactivation> EntraPimactivations { get; set; } = new List<EntraPimactivation>();
-
     public virtual ICollection<ServicePrincipalRoleMapping> EntraServicePrincipals { get; set; } = new List<ServicePrincipalRoleMapping>();
 
     public virtual ICollection<UserRoleMapping> EntraUserAccounts { get; set; } = new List<UserRoleMapping>();

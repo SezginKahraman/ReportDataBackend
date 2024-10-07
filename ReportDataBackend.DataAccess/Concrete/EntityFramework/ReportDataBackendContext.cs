@@ -153,18 +153,12 @@ public partial class ReportDataBackendContext : DbContext
 
             entity.Property(e => e.DbPimid).HasColumnName("db_PIMID");
             entity.Property(e => e.AzEndTime)
-                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("az_EndTime");
             entity.Property(e => e.AzJustification)
                 .IsUnicode(false)
                 .HasColumnName("az_Justification");
-            entity.Property(e => e.AzRoleId)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("az_RoleID");
             entity.Property(e => e.AzStartTime)
-                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("az_StartTime");
             entity.Property(e => e.AzTicketNumber)
@@ -176,11 +170,6 @@ public partial class ReportDataBackendContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("az_TicketSystem");
             entity.Property(e => e.DbUserAccountId).HasColumnName("db_UserAccountID");
-
-            entity.HasOne(d => d.AzRole).WithMany(p => p.EntraPimactivations)
-                .HasForeignKey(d => d.AzRoleId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__EntraPIMA__az_Ro__3F466844");
 
             entity.HasOne(d => d.DbUserAccount).WithMany(p => p.EntraPimactivations)
                 .HasForeignKey(d => d.DbUserAccountId)
@@ -219,9 +208,9 @@ public partial class ReportDataBackendContext : DbContext
 
         modelBuilder.Entity<EntraServicePrincipal>(entity =>
         {
-            entity.HasKey(e => e.DbSpid).HasName("PK__EntraSer__BD0FA81C795D97B1");
+            entity.HasKey(e => e.AzSpidId).HasName("PK__EntraSer__BD0FA81C795D97B1");
 
-            entity.Property(e => e.DbSpid).HasColumnName("db_SPID");
+            entity.Property(e => e.AzSpidId).HasColumnName("az_SPID");
             entity.Property(e => e.AzAssignment)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -230,10 +219,6 @@ public partial class ReportDataBackendContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("az_Enabled");
-            entity.Property(e => e.AzGroupId)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("az_GroupID");
             entity.Property(e => e.AzLastActivated)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -242,10 +227,10 @@ public partial class ReportDataBackendContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("az_Name");
-            entity.Property(e => e.AzRoleId)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("az_RoleID");
+            entity.Property(e => e.AzUPN)
+               .HasMaxLength(255)
+               .IsUnicode(false)
+               .HasColumnName("az_UPN");
             entity.Property(e => e.AzStatus)
                 .HasMaxLength(50)
                 .IsUnicode(false)

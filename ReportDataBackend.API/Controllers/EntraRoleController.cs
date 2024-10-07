@@ -33,7 +33,6 @@ namespace ReportDataBackend.API.Controllers
                 DbCreatedDate = relatedRole.DbCreatedDate,
                 DbModifiedDate = relatedRole.DbModifiedDate,
                 EntraGroupAssignments = relatedRole.EntraGroupAssignments?.Select(t => new EntraGroupAssignmentResponseModel()).ToList(),
-                EntraPimactivations = relatedRole.EntraPimactivations?.Select(t => new EntraPimactivationResponseModel()).ToList(),
                 EntraServicePrincipals = relatedRole.EntraServicePrincipals?.Select(t => new EntraServicePrincipalResponseModel()).ToList(),
                 EntraUserAccounts = relatedRole.EntraUserAccounts?.Select(account =>
                 {
@@ -72,7 +71,6 @@ namespace ReportDataBackend.API.Controllers
                 DbCreatedDate = relatedRole.DbCreatedDate,
                 DbModifiedDate = relatedRole.DbModifiedDate,
                 EntraGroupAssignments = relatedRole.EntraGroupAssignments.Select(t => new EntraGroupAssignmentResponseModel()).ToList(),
-                EntraPimactivations = relatedRole.EntraPimactivations.Select(t => new EntraPimactivationResponseModel()).ToList(),
                 EntraServicePrincipals = relatedRole.EntraServicePrincipals.Select(t => new EntraServicePrincipalResponseModel()).ToList(),
                 EntraUserAccounts = relatedRole.EntraUserAccounts?.Select(account =>
                 {

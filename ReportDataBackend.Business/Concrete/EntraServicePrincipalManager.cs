@@ -37,9 +37,9 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessDataResult<List<EntraServicePrincipal>>(_entraServicePrincipalDal.GetAll());
         }
 
-        public IDataResult<EntraServicePrincipal> GetById(int id, bool withIncludes = false)
+        public IDataResult<EntraServicePrincipal> GetById(string id, bool withIncludes = false)
         {
-            return new SuccessDataResult<EntraServicePrincipal>(_entraServicePrincipalDal.Get(t => t.DbSpid == id));
+            return new SuccessDataResult<EntraServicePrincipal>(_entraServicePrincipalDal.Get(t => t.AzSpidId == id));
         }
 
         public IResult Update(EntraServicePrincipal t)

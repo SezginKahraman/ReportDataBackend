@@ -6,15 +6,13 @@ namespace ReportDataBackend.Entity.Concrete;
 
 public partial class EntraServicePrincipal : IEntity
 {
-    public int DbSpid { get; set; }
-
-    public string AzRoleId { get; set; } = null!;
+    public string AzSpidId { get; set; }
 
     public string? AzName { get; set; }
+    
+    public string? AzUPN { get; set; }
 
     public string? AzAssignment { get; set; }
-
-    public string? AzGroupId { get; set; }
 
     public string AzType { get; set; } = null!;
 
