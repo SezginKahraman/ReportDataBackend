@@ -26,6 +26,8 @@ public partial class EntraUserAccount : IEntity
 
     public string AzStatus { get; set; } = null!;
 
+    public string AzObjectId { get; set; } = null!;
+
     public virtual ICollection<EntraGroupModification> EntraGroupModifications { get; set; } = new List<EntraGroupModification>();
 
     public virtual ICollection<EntraPimactivation> EntraPimactivations { get; set; } = new List<EntraPimactivation>();

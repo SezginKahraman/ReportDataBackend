@@ -9,7 +9,7 @@ public partial class ServicePrincipalRoleMapping
 
     public string AzRoleId { get; set; } = null!;
 
-    public int AzSpid { get; set; }
+    public string AzSpid { get; set; }
 
     public DateTime DbAssignedDate { get; set; }
 

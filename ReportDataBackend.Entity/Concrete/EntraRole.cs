@@ -18,6 +18,8 @@ public partial class EntraRole : IEntity
 
     public string AzStatus { get; set; } = null!;
 
+    public virtual ICollection<EntraRoleStat> EntraRoleStats { get; set; } = new List<EntraRoleStat>();
+
     public virtual ICollection<EntraGroupAssignment> EntraGroupAssignments { get; set; } = new List<EntraGroupAssignment>();
 
     public virtual ICollection<ServicePrincipalRoleMapping> EntraServicePrincipals { get; set; } = new List<ServicePrincipalRoleMapping>();

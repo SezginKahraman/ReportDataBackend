@@ -9,7 +9,7 @@ public partial class ServicePrincipalGroupMapping
 
     public string AzGroupId { get; set; } = null!;
 
-    public int AzSpid { get; set; }
+    public string AzSpidId { get; set; }
 
     public DateTime DbAssignedDate { get; set; }
 

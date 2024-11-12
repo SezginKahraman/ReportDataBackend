@@ -26,6 +26,8 @@ public partial class ReportDataBackendContext : DbContext
 
     public virtual DbSet<EntraRole> EntraRoles { get; set; }
 
+    public virtual DbSet<EntraRoleStat> EntraRoleStats { get; set; }
+
     public virtual DbSet<EntraServicePrincipal> EntraServicePrincipals { get; set; }
 
     public virtual DbSet<EntraUserAccount> EntraUserAccounts { get; set; }
@@ -177,6 +179,26 @@ public partial class ReportDataBackendContext : DbContext
                 .HasConstraintName("FK__EntraPIMA__db_Us__3E52440B");
         });
 
+        modelBuilder.Entity<EntraRoleStat>(entity =>
+        {
+            entity.HasKey(e => e.DbRSID);
+
+            entity.ToTable("EntraRoleStats");
+
+            entity.Property(e => e.DbRSID).HasColumnName("db_RSID");
+            entity.Property(e => e.AzRoleId).HasMaxLength(255)
+                .HasColumnName("az_RoleId");
+            entity.Property(e => e.DbModifiedDate).HasColumnType("datetime")
+                .HasColumnName("db_ModifiedDate");
+            entity.Property(e => e.Eligible).HasColumnName("az_Eligible");
+            entity.Property(e => e.Assigned).HasColumnName("az_Assigned");
+
+            entity.HasOne(d => d.AzRole).WithMany(p => p.EntraRoleStats)
+                .HasForeignKey(d => d.AzRoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+
         modelBuilder.Entity<EntraRole>(entity =>
         {
             entity.HasKey(e => e.AzRoleId).HasName("PK__EntraRol__44EF1600FB955925");
@@ -274,6 +296,10 @@ public partial class ReportDataBackendContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("az_Status");
+            entity.Property(e => e.AzObjectId)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("az_ObjectId");
             entity.Property(e => e.AzType)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -321,7 +347,7 @@ public partial class ReportDataBackendContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("az_GroupID");
-            entity.Property(e => e.AzSpid).HasColumnName("az_SPID");
+            entity.Property(e => e.AzSpidId).HasColumnName("az_SPID");
             entity.Property(e => e.DbAssignedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
@@ -333,7 +359,7 @@ public partial class ReportDataBackendContext : DbContext
                 .HasConstraintName("FK__ServicePr__az_Gr__7E37BEF6");
 
             entity.HasOne(d => d.AzSp).WithMany(p => p.AzGroups)
-                .HasForeignKey(d => d.AzSpid)
+                .HasForeignKey(d => d.AzSpidId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ServicePr__az_SP__7F2BE32F");
         });
