@@ -35,6 +35,7 @@ namespace ReportDataBackend.API
             builder.Services.AddScoped<IEntraRoleService, EntraRoleManager>();
             builder.Services.AddScoped<IEntraServicePrincipalService, EntraServicePrincipalManager>();
             builder.Services.AddScoped<IEntraUserAccountService, EntraUserAccountManager>();
+            builder.Services.AddScoped<IEntraRoleStatService, EntraRoleStatManager>();
 
             #endregion
 
@@ -47,6 +48,22 @@ namespace ReportDataBackend.API
             builder.Services.AddScoped<IEntraRoleDal, EntraRoleDal>();
             builder.Services.AddScoped<IEntraServicePrincipalDal, EntraServicePrincipalDal>();
             builder.Services.AddScoped<IEntraUserAccountDal, EntraUserAccountDal>();
+            builder.Services.AddScoped<IEntraRoleStatDal, EntraRoleStatDal>();
+
+            #endregion
+
+            #region [ CORS ]
+
+            // CORS'u yapýlandýr
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4000") // Ýzin verilen kökenleri buraya ekleyin
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
 
             #endregion
 
@@ -63,6 +80,7 @@ namespace ReportDataBackend.API
 
             app.UseAuthorization();
 
+            app.UseCors("AllowSpecificOrigin");
 
             app.MapControllers();
 

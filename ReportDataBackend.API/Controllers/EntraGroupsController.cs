@@ -6,13 +6,13 @@ namespace ReportDataBackend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EntraGroupController : ControllerBase
+    public class EntraGroupsController : ControllerBase
     {
         private readonly IEntraGroupService _entraGroupService;
-        private readonly ILogger<EntraGroupController> _logger;
+        private readonly ILogger<EntraGroupsController> _logger;
 
 
-        public EntraGroupController(IEntraGroupService entraGroupService, ILogger<EntraGroupController> logger)
+        public EntraGroupsController(IEntraGroupService entraGroupService, ILogger<EntraGroupsController> logger)
         {
             _entraGroupService = entraGroupService;
             _logger = logger;

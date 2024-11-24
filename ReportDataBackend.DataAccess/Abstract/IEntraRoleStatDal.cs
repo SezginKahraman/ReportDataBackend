@@ -11,5 +11,6 @@ namespace ReportDataBackend.DataAccess.Abstract
 {
     public interface IEntraRoleStatDal : IEntityRepository<EntraRoleStat>
     {
+        List<EntraRoleStat> GetAll(int pageSize, int pageIndex, Expression<Func<EntraRoleStat, bool>> filter = null);
     }
 }

@@ -7,10 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace ReportDataBackend.DataAccess.Concrete.EntityFramework
 {
     public class EntraGroupDal : EfEntityRepositoryBase<EntraGroup, ReportDataBackendContext>, IEntraGroupDal
     {
+        public List<EntraGroup> GetAll(int pageSize, int pageIndex, Expression<Func<EntraGroup, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

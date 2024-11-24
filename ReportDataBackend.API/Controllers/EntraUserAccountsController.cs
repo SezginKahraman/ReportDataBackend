@@ -8,12 +8,12 @@ namespace ReportDataBackend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EntraUserAccountController : ControllerBase
+    public class EntraUserAccountsController : ControllerBase
     {
         private readonly IEntraUserAccountService _entraUserAccountService;
-        private readonly ILogger<EntraUserAccountController> _logger;
+        private readonly ILogger<EntraUserAccountsController> _logger;
 
-        public EntraUserAccountController(IEntraUserAccountService entraUserAccountService, ILogger<EntraUserAccountController> logger)
+        public EntraUserAccountsController(IEntraUserAccountService entraUserAccountService, ILogger<EntraUserAccountsController> logger)
         {
             _entraUserAccountService = entraUserAccountService;
             _logger = logger;

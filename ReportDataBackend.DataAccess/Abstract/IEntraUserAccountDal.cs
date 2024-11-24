@@ -14,5 +14,7 @@ namespace ReportDataBackend.DataAccess.Abstract
         public EntraUserAccount? GetWithUsers(Expression<Func<EntraUserAccount, bool>> filter = null);
 
         public List<EntraUserAccount> GetAllWithUsers(Expression<Func<EntraUserAccount, bool>> filter = null);
+
+        List<EntraUserAccount> GetAll(int pageSize, int pageIndex, Expression<Func<EntraUserAccount, bool>> filter = null);
     }
 }

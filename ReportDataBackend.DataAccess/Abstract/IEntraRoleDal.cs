@@ -15,5 +15,7 @@ namespace ReportDataBackend.DataAccess.Abstract
         public EntraRole? GetWithUsers(Expression<Func<EntraRole, bool>> filter = null);
 
         public List<EntraRole> GetAllWithUsers(Expression<Func<EntraRole, bool>> filter = null);
+
+        List<EntraRole> GetAll(int pageSize, int pageIndex, Expression<Func<EntraRole, bool>> filter = null);
     }
 }

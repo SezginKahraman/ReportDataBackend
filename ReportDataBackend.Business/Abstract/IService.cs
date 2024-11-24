@@ -15,6 +15,6 @@ namespace ReportDataBackend.Business.Abstract
         IResult Delete(TEntity t);
         IResult Update(TEntity t);
         IDataResult<TEntity> GetById(TTypeOfEntityId id, bool withIncludes = false);
-        IDataResult<List<TEntity>> GetAll(bool withIncludes = false);
+        IDataResult<List<TEntity>> GetAll(bool withIncludes = false, int pageSize = 0, int pageIndex = 0);
     }
 }

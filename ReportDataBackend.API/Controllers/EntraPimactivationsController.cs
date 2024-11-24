@@ -6,13 +6,13 @@ namespace ReportDataBackend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EntraPimactivationController : ControllerBase
+    public class EntraPimactivationsController : ControllerBase
     {
         private readonly IEntraPimactivationService _entraPimactivationService;
-        private readonly ILogger<EntraPimactivationController> _logger;
+        private readonly ILogger<EntraPimactivationsController> _logger;
 
 
-        public EntraPimactivationController(IEntraPimactivationService entraPimactivationService, ILogger<EntraPimactivationController> logger)
+        public EntraPimactivationsController(IEntraPimactivationService entraPimactivationService, ILogger<EntraPimactivationsController> logger)
         {
             _entraPimactivationService = entraPimactivationService;
             _logger = logger;

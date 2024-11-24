@@ -31,5 +31,10 @@ namespace ReportDataBackend.DataAccess.Concrete.EntityFramework
                     context.Set<EntraUserAccount>().Include(t => t.AzRoles).ThenInclude(t => t.AzRole).ToList() : context.Set<EntraUserAccount>().Include(t => t.AzRoles).ThenInclude(t => t.AzRole).Where(filter).ToList();
             }
         }
+
+        public List<EntraUserAccount> GetAll(int pageSize, int pageIndex, Expression<Func<EntraUserAccount, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

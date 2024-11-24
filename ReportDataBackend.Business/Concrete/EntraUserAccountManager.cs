@@ -30,7 +30,7 @@ namespace ReportDataBackend.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<EntraUserAccount>> GetAll(bool withIncludes = false)
+        public IDataResult<List<EntraUserAccount>> GetAll(bool withIncludes = false, int pageSize = 0, int pageIndex = 0)
         {
             var relatedAccounts = withIncludes ? _entraUserAccountDal.GetAllWithUsers() : _entraUserAccountDal.GetAll();
 
