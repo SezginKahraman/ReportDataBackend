@@ -10,7 +10,7 @@
 
         public string? AzCreatedDate { get; set; }
 
-        public DateTime DbModifiedDate { get; set; }
+        public DateTime? DbModifiedDate { get; set; }
 
         public string AzStatus { get; set; } = null!;
 

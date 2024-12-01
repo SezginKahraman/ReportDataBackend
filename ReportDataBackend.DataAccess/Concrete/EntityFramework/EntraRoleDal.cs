@@ -20,7 +20,7 @@ namespace ReportDataBackend.DataAccess.Concrete.EntityFramework
             using (ReportDataBackendContext context = new ReportDataBackendContext())
             {
                 return filter == null ?
-                    context.Set<EntraRole>().Include(t => t.EntraUserAccounts).ThenInclude(t => t.DbUserAccount).SingleOrDefault(filter) : context.Set<EntraRole>().Include(t => t.EntraUserAccounts).ThenInclude(t => t.DbUserAccount).SingleOrDefault(filter);
+                    context.Set<EntraRole>().Include(t => t.EntraGroupAssignments).ThenInclude(t => t.AzGroup).Include(t => t.EntraUserAccounts).ThenInclude(t => t.DbUserAccount).SingleOrDefault(filter) : context.Set<EntraRole>().Include(t => t.EntraGroupAssignments).ThenInclude(t => t.AzGroup).Include(t => t.EntraUserAccounts).ThenInclude(t => t.DbUserAccount).SingleOrDefault(filter);
             }
         }
 

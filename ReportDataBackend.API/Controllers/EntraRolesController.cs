@@ -32,11 +32,34 @@ namespace ReportDataBackend.API.Controllers
                 AzStatus = relatedRole.AzStatus,
                 DbCreatedDate = relatedRole.DbCreatedDate,
                 DbModifiedDate = relatedRole.DbModifiedDate,
-                EntraGroupAssignments = relatedRole.EntraGroupAssignments?.Select(t => new EntraGroupAssignmentResponseModel()).ToList(),
+                EntraGroupAssignments = relatedRole.EntraGroupAssignments?.Select(t =>
+                {
+                    if (t.AzGroup != null)
+                    {
+                        var groupAssignment = new EntraGroupAssignmentResponseModel()
+                        {
+                            AzAssignmentType = t.AzAssignmentType,
+                            AzGroupId = t.AzGroupId,
+                            AzRoleId = t.AzRoleId,
+                            AzStatus = t.AzStatus,
+                            DbModifiedDate = t.DbModifiedDate,
+                            AzGroup = new EntraGroupResponseModel()
+                            {
+                                AzGroupId = t.AzGroup?.AzGroupId,
+                                AzGroupName = t.AzGroup?.AzGroupName,
+                                AzStatus = t.AzGroup?.AzStatus,
+                                DbModifiedDate = t.AzGroup?.DbModifiedDate
+                            },
+                        };
+                        return groupAssignment;
+                    }
+                    return new EntraGroupAssignmentResponseModel();
+                }
+                    ).ToList(),
                 EntraServicePrincipals = relatedRole.EntraServicePrincipals?.Select(t => new EntraServicePrincipalResponseModel()).ToList(),
                 EntraUserAccounts = relatedRole.EntraUserAccounts?.Select(account =>
                 {
-                    if(account.DbUserAccount != null)
+                    if (account.DbUserAccount != null)
                     {
                         return new EntraUserAccountResponseModel()
                         {
