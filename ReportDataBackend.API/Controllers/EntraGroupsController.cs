@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ReportDataBackend.Business.Abstract;
+using ReportDataBackend.DataAccess.Abstract;
+using ReportDataBackend.DataAccess.Concrete.EntityFramework;
 using ReportDataBackend.Entity.Concrete;
 
 namespace ReportDataBackend.API.Controllers
@@ -10,7 +13,11 @@ namespace ReportDataBackend.API.Controllers
     {
         private readonly IEntraGroupService _entraGroupService;
         private readonly ILogger<EntraGroupsController> _logger;
-
+        private readonly IEntraGroupDal _entraGroupDal;
+        public EntraGroupsController(IEntraGroupDal entraGroupDal)
+        {
+            _entraGroupDal = entraGroupDal;
+        }
 
         public EntraGroupsController(IEntraGroupService entraGroupService, ILogger<EntraGroupsController> logger)
         {
@@ -22,14 +29,18 @@ namespace ReportDataBackend.API.Controllers
         [HttpGet]
         public EntraGroup GetById(string id)
         {
-            return _entraGroupService.GetById(id).Data;
+            using (ReportDataBackendContext context = new ReportDataBackendContext())
+            {
+                var groupDetails = context.Set<EntraGroup>().Include(t => t.EntraUserAccounts).ThenInclude(t => t.DbUserAccount).SingleOrDefault(t => t.AzGroupId == id);
+                return groupDetails == null ? new EntraGroup() : groupDetails;
+            }
         }
 
         [Route("getall")]
         [HttpGet]
         public List<EntraGroup> GetAll()
         {
-            return _entraGroupService.GetAll().Data;
+            return _entraGroupDal.GetAll();
         }
     }
 }
