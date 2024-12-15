@@ -59,7 +59,7 @@ namespace ReportDataBackend.API.Controllers
                 EntraServicePrincipals = relatedRole.EntraServicePrincipals?.Select(t => new EntraServicePrincipalResponseModel()).ToList(),
                 EntraUserAccounts = relatedRole.EntraUserAccounts?.Select(account =>
                 {
-                    if (account.DbUserAccount != null)
+                    if (account.DbUserAccount != null && account.DbUserAccount.AzType == "Direct Assigned")
                     {
                         return new EntraUserAccountResponseModel()
                         {
@@ -76,7 +76,7 @@ namespace ReportDataBackend.API.Controllers
                         };
                     }
                     return new EntraUserAccountResponseModel();
-                }).ToList()
+                }).Where(t => t.AzDisplayName != null).ToList()
             };
         }
 

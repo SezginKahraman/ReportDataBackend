@@ -104,7 +104,7 @@ namespace ReportDataBackend.API.Controllers
         {
             using (ReportDataBackendContext context = new ReportDataBackendContext())
             {
-                var entraUsers = context.Set<EntraUserAccount>().Include(t => t.EntraPimactivations).Where(t => t.AzGroupId == groupId).ToList();
+                var entraUsers = context.Set<EntraUserAccount>().Include(t => t.EntraPimactivations).Where(t => t.AzGroupId == groupId && t.AzAssignment == "Eligible").ToList();
 
                 return entraUsers == null ? new List<EntraUserAccountResponseModel>() : entraUsers.Select(t => new EntraUserAccountResponseModel()
                 {
@@ -127,7 +127,7 @@ namespace ReportDataBackend.API.Controllers
 
         private string GetLastActivatedDate(EntraUserAccount userAccount)
         {
-            var pimActivations = userAccount.EntraPimactivations.OrderByDescending(t => t.AzEndTime);
+            var pimActivations = userAccount.EntraPimactivations.OrderByDescending(t => t.AzStartTime);
 
             if (DateTime.TryParseExact(
                     userAccount.AzLastActivated,
@@ -144,11 +144,11 @@ namespace ReportDataBackend.API.Controllers
 
                 if (roundedDays > 30)
                 {
-                    return $"{roundedDays}";
+                    return $"{roundedDays} Days";
                 }
                 else
                 {
-                    return pimActivations.FirstOrDefault()?.AzEndTime != null ? pimActivations.FirstOrDefault()?.AzEndTime.ToString("MM/dd/yyyy hh:mm") : "No time from pim activations.";
+                    return pimActivations.FirstOrDefault()?.AzStartTime != null ? pimActivations.FirstOrDefault()?.AzStartTime.ToString("MM/dd/yyyy hh:mm") : "No time from pim activations.";
                 }
             }
 

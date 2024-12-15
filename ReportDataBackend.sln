@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportDataBackend.API", "ReportDataBackend.API\ReportDataBackend.API.csproj", "{B42770C7-AE17-4B03-94F4-D2671CE505DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportDataBackend.API", "ReportDataBackend.API\ReportDataBackend.API.csproj", "{B42770C7-AE17-4B03-94F4-D2671CE505DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportDataBackend.DataAccess", "ReportDataBackend.DataAccess\ReportDataBackend.DataAccess.csproj", "{236F5F7C-772F-4D74-A601-CA356A1DC953}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportDataBackend.DataAccess", "ReportDataBackend.DataAccess\ReportDataBackend.DataAccess.csproj", "{236F5F7C-772F-4D74-A601-CA356A1DC953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportDataBackend.Entity", "ReportDataBackend.Entity\ReportDataBackend.Entity.csproj", "{FFAFE131-9D5A-4701-B3CF-A16E1ABDF1B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportDataBackend.Entity", "ReportDataBackend.Entity\ReportDataBackend.Entity.csproj", "{FFAFE131-9D5A-4701-B3CF-A16E1ABDF1B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportDataBackend.Business", "ReportDataBackend.Business\ReportDataBackend.Business.csproj", "{EA3593C8-99B0-4C8D-8609-319609DD2742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportDataBackend.Business", "ReportDataBackend.Business\ReportDataBackend.Business.csproj", "{EA3593C8-99B0-4C8D-8609-319609DD2742}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1A69F534-912F-44A4-B6FE-0502B6A0E2A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EA3593C8-99B0-4C8D-8609-319609DD2742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA3593C8-99B0-4C8D-8609-319609DD2742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA3593C8-99B0-4C8D-8609-319609DD2742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A69F534-912F-44A4-B6FE-0502B6A0E2A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A69F534-912F-44A4-B6FE-0502B6A0E2A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A69F534-912F-44A4-B6FE-0502B6A0E2A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A69F534-912F-44A4-B6FE-0502B6A0E2A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

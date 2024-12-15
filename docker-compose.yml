@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ../ReportDataFrontend/app
+      dockerfile: DockerFile
+    ports:
+      - "4000:80"
+    depends_on:
+      - backend
+    
+  backend:
+    image: ${DOCKER_REGISTRY-}reportdatabackendapi
+    build:
+      context: .
+      dockerfile: ReportDataBackend.API/Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=localhost,1440;Database=Identity; User=SA;Password=ReportDataBackend2024*!; Trusted_Connection=false; TrustServerCertificate=True;
+    depends_on:
+      - db
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "ReportDataBackend2024*!"
+      ACCEPT_EULA: "Y"
