@@ -40,9 +40,6 @@ public partial class ReportDataBackendContext : DbContext
 
     public virtual DbSet<UserRoleMapping> UserRoleMappings { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=localhost,1440;Database=Identity; User=SA;Password=ReportDataBackend2024*!; Trusted_Connection=false; TrustServerCertificate=True");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<EntraGroup>(entity =>

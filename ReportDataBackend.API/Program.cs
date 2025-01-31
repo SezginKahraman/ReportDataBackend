@@ -1,8 +1,11 @@
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
 using ReportDataBackend.Business.Abstract;
 using ReportDataBackend.Business.Concrete;
 using ReportDataBackend.DataAccess.Abstract;
 using ReportDataBackend.DataAccess.Concrete.EntityFramework;
+using System.Configuration;
 using System.Text.Json.Serialization;
 
 namespace ReportDataBackend.API
@@ -50,6 +53,7 @@ namespace ReportDataBackend.API
             builder.Services.AddScoped<IEntraUserAccountDal, EntraUserAccountDal>();
             builder.Services.AddScoped<IEntraRoleStatDal, EntraRoleStatDal>();
 
+            builder.Services.AddDbContext<ReportDataBackendContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbContext")));
             #endregion
 
             #region [ CORS ]
